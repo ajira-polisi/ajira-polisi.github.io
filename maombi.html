@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#ffffff;
+    font-family:Arial, Helvetica, sans-serif;
+    overflow:hidden;
+}
+
+.container{
+    width:95%;
+    max-width:900px;
+    text-align:center;
+}
+
+/* LOADER */
+.loader{
+    width:120px;
+    height:120px;
+    margin:auto;
+    border:12px solid #e5e5e5;
+    border-top:12px solid #28a745;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+.loading-text{
+    margin-top:25px;
+    font-size:28px;
+    font-weight:bold;
+    color:#555;
+}
+
+@keyframes spin{
+    100%{
+        transform:rotate(360deg);
+    }
+}
+
+/* MESSAGE */
+.message{
+    display:none;
+    font-size:52px;
+    font-weight:700;
+    color:#28a745;
+    line-height:1.4;
+    margin:auto;
+    max-width:100%;
+}
+
+.typing{
+    overflow:hidden;
+    border-right:4px solid #28a745;
+    white-space:nowrap;
+    width:0;
+    animation:
+        typing 4s steps(60,end) forwards,
+        blink .8s infinite;
+}
+
+@keyframes typing{
+    from{width:0}
+    to{width:100%}
+}
+
+@keyframes blink{
+    50%{
+        border-color:transparent;
+    }
+}
+
+/* MOBILE */
+@media (max-width:768px){
+
+    .loader{
+        width:100px;
+        height:100px;
+        border-width:10px;
+    }
+
+    .loading-text{
+        font-size:24px;
+    }
+
+    .message{
+        font-size:34px;
+        padding:0 10px;
+    }
+
+    .typing{
+        white-space:normal;
+        border-right:none;
+        width:100%;
+        animation:fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn{
+        from{
+            opacity:0;
+            transform:translateY(20px);
+        }
+        to{
+            opacity:1;
+            transform:translateY(0);
+        }
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div id="loadingSection">
+        <div class="loader"></div>
+        <div class="loading-text">Tafadhali Subiri...</div>
+    </div>
+
+    <div id="messageSection" class="message">
+        <div class="typing">
+            🎉 Hongera!<br><br>
+            Maombi Yako Yamepokelewa.<br>
+            Utajulishwa Pindi Utakapokubaliwa.
+        </div>
+    </div>
+
+</div>
+
+<script>
+setTimeout(function(){
+    document.getElementById("loadingSection").style.display = "none";
+    document.getElementById("messageSection").style.display = "block";
+}, 5000);
+</script>
+
+</body>
+</html>
